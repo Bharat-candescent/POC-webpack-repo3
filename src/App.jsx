@@ -80,10 +80,14 @@ const App = () => {
       const { selectedCardName, selectedCardBalance } = useSharedStateSummary();
     const [loading, setLoading] = useState(true);
 
+    console.log("Loaded on production")
+
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 500);
         return () => clearTimeout(timer);
     }, []);
+
+    console.log("Host App: Rendering with selected card:", selectedCardName);
 
     if (loading) {
         return (

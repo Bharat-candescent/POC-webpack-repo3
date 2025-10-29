@@ -9,5 +9,23 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    { 
+      "source": "/online-banking-mfe-1/:match*",
+      "destination": "https://poc-webpack-repo1.vercel.app/:match*"
+    },
+    {
+      "source": "/credit-card-mfe/:match*",
+      "destination": "https://poc-webpack-repo2.vercel.app/:match*"
+    },
+    {
+      "source": "/credit-card-mfe-1/:match*",
+      "destination": "https://poc-webpack-repo4.vercel.app/:match*"
+    },
+    {
+      "source": "/online-banking-mfe-2/:match*",
+      "destination": "https://poc-webpack-repo5.vercel.app/:match*"
+    }
   ]
 }
