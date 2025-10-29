@@ -18,12 +18,13 @@ module.exports = (env, argv) => {
     },
     
     // 🚀 Production (Live) URLs - Mapped to your Vercel domains
+    // In the Host App's webpack.config.js (poc-webpack-repo3)
     production: {
-      // Use the new rewrite paths defined in vercel.json
-      CreditCardMFE: 'CreditCardMFE@/credit-card-mfe/remoteEntry.js',
-      OnlineBankingMFE: 'OnlineBankingMFE@/online-banking-mfe-1/remoteEntry.js',
-      creditCardMFE1: 'creditCardMFE1@/credit-card-mfe-1/remoteEntry.js',
-      onlineBankingMFE1: 'onlineBankingMFE1@/online-banking-mfe-2/remoteEntry.js',
+      // Must use the full Vercel URL to fetch the initial remoteEntry.js file
+      CreditCardMFE: 'CreditCardMFE@https://poc-webpack-repo2.vercel.app/remoteEntry.js',
+      OnlineBankingMFE: 'OnlineBankingMFE@https://poc-webpack-repo1.vercel.app/remoteEntry.js',
+      creditCardMFE1: 'creditCardMFE1@https://poc-webpack-repo4.vercel.app/remoteEntry.js',
+      onlineBankingMFE1: 'onlineBankingMFE1@https://poc-webpack-repo5.vercel.app/remoteEntry.js',
     },
   };
 
