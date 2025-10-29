@@ -100,7 +100,7 @@ const App = () => {
     
     <div style={styles.header}>
       <div style={styles.contentArea}>
-        <h1 style={styles.title}>Dashboard</h1>
+        <h1 style={styles.title}>MFEs Using Webpack</h1>
       </div>
     </div>
 

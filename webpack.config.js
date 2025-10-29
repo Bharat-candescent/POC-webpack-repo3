@@ -11,20 +11,19 @@ module.exports = (env, argv) => {
   const remoteUrls = {
     // 🟢 Development (Localhost) URLs
     development: {
-      // NOTE: I'm keeping your original port mappings for local development
-      CreditCardMFE: 'CreditCardMFE@http://localhost:3001/remoteEntry.js',
-      OnlineBankingMFE: 'OnlineBankingMFE@http://localhost:3002/remoteEntry.js',
-      creditCardMFE1: 'creditCardMFE1@http://localhost:8081/remoteEntry.js',
-      onlineBankingMFE1: 'onlineBankingMFE1@http://localhost:8082/remoteEntry.js',
+      CreditCardMFE: 'CreditCardMFE@http://localhost:3001/remoteEntry.js', // (3001)
+      OnlineBankingMFE: 'OnlineBankingMFE@http://localhost:3002/remoteEntry.js', // (3002)
+      creditCardMFE1: 'creditCardMFE1@http://localhost:8081/remoteEntry.js', // (8081)
+      onlineBankingMFE1: 'onlineBankingMFE1@http://localhost:8082/remoteEntry.js', // (8082)
     },
     
     // 🚀 Production (Live) URLs - Mapped to your Vercel domains
     production: {
-      // Assuming these domains correspond to your respective MFEs
-      CreditCardMFE: 'CreditCardMFE@https://poc-webpack-repo3.vercel.app/remoteEntry.js',
-      OnlineBankingMFE: 'OnlineBankingMFE@https://poc-webpack-repo1.vercel.app/remoteEntry.js',
-      creditCardMFE1: 'creditCardMFE1@https://poc-webpack-repo4.vercel.app/remoteEntry.js',
-      onlineBankingMFE1: 'onlineBankingMFE1@https://poc-webpack-repo5.vercel.app/remoteEntry.js',
+      // Confirmed URLs:
+      CreditCardMFE: 'CreditCardMFE@https://poc-webpack-repo2.vercel.app/remoteEntry.js', // Mapped to repo2 (3001)
+      OnlineBankingMFE: 'OnlineBankingMFE@https://poc-webpack-repo1.vercel.app/remoteEntry.js', // Mapped to repo1 (3002)
+      creditCardMFE1: 'creditCardMFE1@https://poc-webpack-repo4.vercel.app/remoteEntry.js', // Mapped to repo4 (8081)
+      onlineBankingMFE1: 'onlineBankingMFE1@https://poc-webpack-repo5.vercel.app/remoteEntry.js', // Mapped to repo5 (8082)
     },
   };
 
@@ -68,7 +67,7 @@ module.exports = (env, argv) => {
     plugins: [
       new ModuleFederationPlugin({
         name: 'HostApp',
-        remotes: remotesToUse, // 🟢 Now uses Vercel URLs in production mode
+        remotes: isProduction ? remoteUrls.production : remoteUrls.development, // 🟢 Now uses Vercel URLs in production mode
         shared: {
           ...deps,
           react: {
